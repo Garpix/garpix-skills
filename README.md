@@ -13,3 +13,12 @@ python3 backend/manage.py migrate
 python3 backend/manage.py createsuperuser
 python3 backend/manage.py runserver
 ```
+
+## Quick deployment
+
+```bash
+cp example.env .env
+# change variables
+docker-compose -f docker-compose-production.yml build
+docker-compose -f docker-compose-production.yml up -d
+```
