@@ -10,6 +10,10 @@ MIGRATION_MODULES.update({  # noqa:F405
     'social_django': 'app.migrations.social_django',
 })
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '..', 'frontend', 'build', 'static-backend'),  # noqa
+] + STATICFILES_DIRS  # noqa
+
 GARPIX_USER = {
     'USE_EMAIL_CONFIRMATION': True,
     'USE_PHONE_CONFIRMATION': False,
