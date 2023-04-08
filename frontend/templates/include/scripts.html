@@ -1,5 +1,5 @@
 
 {% load static %}
+{% load vite %}
 
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
+{% vite_scripts 'src/main.tsx' %}
