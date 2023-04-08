@@ -30,6 +30,7 @@ COPY Pipfile Pipfile.lock /code/
 RUN pipenv sync --system
 
 COPY ./run.sh /code/
+COPY ./run_local.sh /code/
 COPY ./uwsgi.ini /code/
 
 RUN mkdir -p /var/log/uwsgi/
