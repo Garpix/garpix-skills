@@ -1,6 +1,6 @@
 FROM node:16-alpine as builder
 
-COPY frontend /code/frontend/
+COPY frontend/app /code/frontend/app/
 
 WORKDIR /code/frontend/app
 
@@ -20,7 +20,7 @@ RUN mkdir -p /code && \
 COPY Pipfile Pipfile.lock /code/
 
 COPY frontend /code/frontend/
-COPY --from=builder /code/frontend/static/build /code/frontend/static/
+COPY --from=builder /code/frontend/static/build /code/frontend/static/build/
 COPY backend /code/backend/
 
 WORKDIR /code
