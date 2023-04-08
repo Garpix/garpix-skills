@@ -2,14 +2,49 @@
 
 ## Quick start
 
-```bash
-git clone https://github.com/Garpix/garpix-skills.git
-cd garpix-skills
+Apply environment variables:
+
+```
 cp example.env .env
-pipenv install
-pipenv shell
-docker-compose up -d
-python3 backend/manage.py migrate
-python3 backend/manage.py createsuperuser
-python3 backend/manage.py runserver
+```
+
+Install python dependencies
+
+```
+make venv
+```
+
+Run the project
+
+```
+make install
+```
+
+## Frontend
+
+### Dev
+
+Install frontend dependencies
+
+```bash
+cd frontend/app
+yarn
+```
+
+Development start
+
+```bash
+yarn dev
+```
+
+### Production (CI/CD)
+
+Production start/
+
+Change environment variables `DEBUG_FRONTEND=False`
+
+```bash
+cd frontend/app
+yarn install --frozen-lockfile
+yarn build
 ```
