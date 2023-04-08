@@ -32,4 +32,7 @@ docker-compose run neo4j bash -c "neo4j-admin database dump neo4j --to-stdout --
 
 ### Restore neo4j database
 
-todo...
+```bash
+docker-compose down
+docker-compose run neo4j bash -c "neo4j-admin database load neo4j --from-stdin --overwrite-destination=true < /dumps/neo4j.dump"
+```
