@@ -20,6 +20,15 @@ Run the project
 make install
 ```
 
+## Local dev
+
+```bash
+cp example.env .env
+sed -i -e 's/POSTGRES_HOST=localhost/POSTGRES_HOST=postgres/g' .env
+sed -i -e 's/REDIS_HOST=localhost/REDIS_HOST=redis/g' .env
+docker-compose -f docker-compose-local.yml up -d
+```
+
 ## Frontend
 
 ### Dev
