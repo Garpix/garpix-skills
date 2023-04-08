@@ -1,3 +1,12 @@
+FROM node:16-alpine as builder
+
+COPY frontend /code/frontend/
+
+WORKDIR /code/frontend/app
+
+RUN yarn install --frozen-lockfile
+RUN yarn build
+
 FROM python:3.10-slim
 
 ENV PYTHONUNBUFFERED 1
@@ -10,14 +19,15 @@ RUN mkdir -p /code && \
 
 COPY Pipfile Pipfile.lock /code/
 
+COPY frontend /code/frontend/
+COPY --from=builder /code/frontend/static/build /code/frontend/static/
+COPY backend /code/backend/
+
 WORKDIR /code
 
 RUN pip3 install pipenv
 COPY Pipfile Pipfile.lock /code/
 RUN pipenv sync --system
-
-COPY backend /code/backend/
-COPY frontend /code/frontend/
 
 COPY ./run.sh /code/
 COPY ./uwsgi.ini /code/
