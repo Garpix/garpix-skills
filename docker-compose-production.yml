@@ -63,13 +63,22 @@ services:
     volumes:
       - ./public:/code/public
 
+  neo4j:
+    image: neo4j:5.6.0
+    env_file:
+      - .env
+    volumes:
+      - ./dumps/neo4j:/dumps
+      - ./data/neo4j:/data
+      - ./logs/neo4j:/logs
+
   postgres:
     image: postgres:14.5-alpine
     restart: always
     env_file:
     - .env
     volumes:
-      - ./dumps:/code/dumps
+      - ./dumps/postgresql:/dumps
       - ./data/postgresql:/var/lib/postgresql/data
 
   redis:

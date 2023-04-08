@@ -9,8 +9,20 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./dumps:/code/dumps
+      - ./dumps/postgresql:/dumps
       - ./data/postgresql:/var/lib/postgresql/data
+
+  neo4j:
+    image: neo4j:5.6.0
+    env_file:
+      - .env
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    volumes:
+      - ./dumps/neo4j:/dumps
+      - ./data/neo4j:/data
+      - ./logs/neo4j:/logs
 
   redis:
      image: redis:alpine
