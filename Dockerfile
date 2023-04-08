@@ -12,7 +12,9 @@ COPY Pipfile Pipfile.lock /code/
 
 WORKDIR /code
 
-RUN pipenv install --system
+RUN pip3 install pipenv
+COPY Pipfile Pipfile.lock /code/
+RUN pipenv sync --system
 
 COPY backend /code/backend/
 COPY frontend /code/frontend/

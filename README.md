@@ -48,3 +48,11 @@ cd frontend/app
 yarn install --frozen-lockfile
 yarn build
 ```
+## Quick deployment
+
+```bash
+cp example.env .env
+# change variables
+docker-compose -f docker-compose-production.yml build
+docker-compose -f docker-compose-production.yml up -d
+```
