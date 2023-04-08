@@ -2,6 +2,33 @@ version: '3'
 
 services:
 
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./vhost.d:/etc/nginx/vhost.d:ro
+      - ./certs:/etc/nginx/certs
+      - ./html:/usr/share/nginx/html
+      - ./proxy.conf:/etc/nginx/proxy.conf
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    environment:
+      - DEFAULT_EMAIL=aleksey@garpix.com
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/acme.sh
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./certs:/etc/nginx/certs
+      - ./html:/usr/share/nginx/html
+
   server:
     image: nginx:alpine
     restart: always
@@ -10,9 +37,9 @@ services:
     volumes:
      - ./nginx.conf:/etc/nginx/nginx.conf
      - ./public:/code/public
-    ports:
-      - '80:80'
-      - '443:443'
+    environment:
+     - VIRTUAL_HOST=skills.garpix.com
+     - LETSENCRYPT_HOST=skills.garpix.com
 
   web:
     build: .
