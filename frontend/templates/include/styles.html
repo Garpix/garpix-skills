@@ -1,6 +1,6 @@
 
 {% load static %}
+{% load vite %}
 
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'css/footer.css' %}" rel="stylesheet">
-
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+{% vite_styles 'src/main.tsx' %}
