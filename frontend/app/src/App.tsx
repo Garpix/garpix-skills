@@ -1,3 +1,7 @@
+import {
+  viteIcon
+} from './assets'
+
 function App() {
 
   return (
@@ -6,6 +10,7 @@ function App() {
       <button className="button is-primary">
         Button
       </button>
+      <img src={viteIcon} />
     </div>
   )
 }
