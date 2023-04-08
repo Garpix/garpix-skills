@@ -29,7 +29,7 @@ def vite_manifest(entries_names):
         styles = []
         return scripts, styles
     else:
-        manifest_filepath = path.join(settings.BASE_DIR, '..', 'frontend', 'build', 'manifest.json')
+        manifest_filepath = path.join(settings.BASE_DIR, '..', 'frontend', 'static', 'build', 'manifest.json')
         with open(manifest_filepath) as fp:
             manifest = json.load(fp)
         _processed = set()

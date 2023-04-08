@@ -11,7 +11,7 @@ MIGRATION_MODULES.update({  # noqa:F405
 })
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '..', 'frontend', 'build', 'static-backend'),  # noqa
+    os.path.join(BASE_DIR, '..', 'frontend', 'static', 'build', 'static-backend'),  # noqa
 ] + STATICFILES_DIRS  # noqa
 
 GARPIX_USER = {
