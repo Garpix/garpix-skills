@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+title Диаграмма состояний навыка у сотрудника
+
+[*] --> Declared : Сотрудник заявил об обладании навыком
+
+Declared --> Approved : Подтвердить навык
+Declared --> NotApproved : Знания недостаточны
+NotApproved ---> Declared : Вернуть на модерацию
+note right of NotApproved : Во время следующего экзамена,\nнавыки возвращаются в статус Declared\nдля возможности повторного\nподтверждения.
+
+@enduml

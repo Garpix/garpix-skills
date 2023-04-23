@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+title Диаграмма состояний интервью
+
+[*] --> Draft : Создать интервью с выбором навыков
+Draft --> Assigned : Назначить интервью с сотрудником
+Assigned --> Done : Интервью закончено
+Assigned --> Draft : Убрать в черновик
+Assigned --> Cancelled : Отменить интервью
+
+@enduml

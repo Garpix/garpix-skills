@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+title Диаграмма состояний сферы
+
+[*] --> Draft : Создать черновик сферы
+Draft --> Published : Опубликовать сферу
+Published --> Draft : Убрать в черновик
+
+@enduml
