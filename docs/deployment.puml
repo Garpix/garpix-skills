@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+actor User
+package "docker-compose" {
+    database neo4j
+    database PostgreSQL
+    node nginx
+    node Django
+    node Celery
+    queue Redis
+    folder "Static & Media Files"
+    note left of "Static & Media Files" : - React App Build, static files\n- Django static files\n- Media files
+}
+
+User -- nginx
+nginx - Django
+Django -- Redis
+Redis -- Celery
+Django -- PostgreSQL
+Django -- neo4j
+PostgreSQL -- Celery
+Django -- "Static & Media Files"
+"Static & Media Files" -- Celery
+nginx -- "Static & Media Files"
+
+@enduml

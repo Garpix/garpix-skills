@@ -1,5 +1,7 @@
 # Garpix Skills
 
+Docs here: [docs/index.md](docs/index.md)
+
 ## Quick start
 
 Apply environment variables:
