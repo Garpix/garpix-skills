@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+title Верхнеуровневые компоненты
+
+node "Хранилище навыков"
+node "Создание навыков"
+node "Учет навыков"
+node "Дашборд"
+node "Дашборд модератора"
+
+@enduml

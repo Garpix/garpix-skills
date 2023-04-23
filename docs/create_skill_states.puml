@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+title Диаграмма состояний навыка
+
+[*] --> Draft : Создать черновик навыка
+Draft --> Pending : Отправить на модерацию
+
+Pending --> Approved : Подтвердить навык
+Pending --> Declined : Отклонить навык
+
+Approved --> PublicDraft : Отредактировать навык
+Declined --> Draft : Вернуть в черновик
+
+PublicDraft --> PublicPending : Отправить на модерацию
+PublicPending --> Approved : Подтвердить изменения
+PublicPending --> PublicDraft : Отклонить изменения
+@enduml

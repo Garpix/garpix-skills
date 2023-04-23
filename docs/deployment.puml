@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/deployment-diagram
 
+title Диаграмма развертывания
+
 actor User
 package "docker-compose" {
     database neo4j
